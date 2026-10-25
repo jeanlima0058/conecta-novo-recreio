@@ -1,16 +1,228 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Semente do Amanhã – ONG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f6f8f7;--card:#fff;--ink:#1d2b3a;--mute:#5b6b7a;--line:#dde5e2;--brand:#1f6f8b;--brand2:#17566d;--sun:#f4a31b;--leaf:#2e9d6b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12191f;--card:#1b252d;--ink:#eaf1f4;--mute:#a3b3bd;--line:#2c3a44;--brand:#4fb0cf;--brand2:#7cc8e0}}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif;margin:0;min-height:100vh}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px}
+.mute{color:var(--mute)}
+.btn{display:inline-block;background:var(--sun);color:#2a1d00;font-weight:700;padding:.75rem 1.6rem;border-radius:999px;transition:transform .15s,filter .15s;cursor:pointer;border:0}
+.btn:hover{filter:brightness(1.07);transform:translateY(-1px)}
+.btn-alt{background:transparent;color:var(--ink);border:2px solid var(--line)}
+.inp{width:100%;background:var(--card);color:var(--ink);border:1.5px solid var(--line);border-radius:10px;padding:.7rem .9rem}
+.inp:focus,.btn:focus-visible,a:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+label{font-weight:700;font-size:.9rem;display:block;margin-bottom:.3rem}
+.nav a{padding:.4rem .8rem;border-radius:999px;font-weight:600}
+.nav a.on{background:var(--brand);color:#fff}
+.page{display:none}.page.show{display:block}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .6s}.slide.on{opacity:1}
+.stars{color:var(--sun);letter-spacing:2px}
+</style>
 </head>
 <body>
-    <a href="home.html">home</a>
-    <a href="cursos.html">cursos</a>
-    <a href="inscreva.html">inscreva-se</a>
-    <a href="sobre.html">sobre</a>
-    <a href="doação.html">doação</a>
 
+<header class="sticky top-0 z-20" style="background:var(--card);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="#home" class="flex items-center gap-2 text-lg font-bold" style="font-family:Fraunces,serif;color:var(--brand)"><span aria-hidden="true" style="font-size:1.5rem">🌱</span>Semente do Amanhã</a>
+    <button id="burger" class="md:hidden btn btn-alt !px-3 !py-1" aria-label="Abrir menu">☰</button>
+    <nav id="nav" class="nav hidden md:flex gap-1 absolute md:static top-full left-0 right-0 md:bg-transparent flex-col md:flex-row p-3 md:p-0" style="background:var(--card)">
+      <a href="#home">Home</a><a href="#cursos">Cursos</a><a href="#inscrever">Inscrever-se</a><a href="#sobre">Sobre</a><a href="#doacao">Doação</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- 1. HOME -->
+<section id="p-home" class="page">
+  <div class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-8 items-center">
+    <div class="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-lg" id="carousel" aria-label="Projetos da instituição">
+      <div class="slide on" style="background:linear-gradient(135deg,#1f6f8b,#2e9d6b)"><p class="absolute bottom-4 left-4 right-4 text-white font-bold text-lg">Oficina de informática: primeira turma formada</p><span class="absolute top-4 left-4 text-6xl">💻</span></div>
+      <div class="slide" style="background:linear-gradient(135deg,#f4a31b,#e0701b)"><p class="absolute bottom-4 left-4 right-4 text-white font-bold text-lg">Arte e música depois da escola</p><span class="absolute top-4 left-4 text-6xl">🎨</span></div>
+      <div class="slide" style="background:linear-gradient(135deg,#2e9d6b,#17566d)"><p class="absolute bottom-4 left-4 right-4 text-white font-bold text-lg">Horta comunitária feita pelas crianças</p><span class="absolute top-4 left-4 text-6xl">🥕</span></div>
+      <div class="absolute bottom-2 right-4 flex gap-2" id="dots"></div>
+    </div>
+    <div>
+      <h1 class="text-3xl md:text-5xl font-bold mb-4">Cursos gratuitos que abrem caminhos para crianças e jovens</h1>
+      <p class="mute mb-3">Somos uma ONG que oferece cursos de informática, artes, música, reforço escolar e esportes para crianças em situação de vulnerabilidade.</p>
+      <p class="mute mb-6">As turmas são pequenas, com professores voluntários e material fornecido pela instituição.</p>
+      <a href="#inscrever" class="btn">Inscreva-se</a>
+    </div>
+  </div>
+  <div class="max-w-6xl mx-auto px-4 pb-12"><h2 class="text-2xl font-bold mb-5">Feedback de quem participa</h2><div class="grid md:grid-cols-3 gap-4 fb"></div></div>
+</section>
+
+<!-- 2. CURSOS -->
+<section id="p-cursos" class="page">
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-center mb-8">Cursos disponíveis</h1>
+    <div id="grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+    <div class="text-center mt-8"><a href="#inscrever" class="btn">Inscreva-se</a></div>
+  </div>
+</section>
+
+<!-- 3. INSCREVA-SE -->
+<section id="p-inscrever" class="page">
+  <div class="max-w-5xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-center mb-8">Matricule-se</h1>
+    <div class="grid md:grid-cols-2 gap-6">
+      <form id="fEnroll" class="card p-6 space-y-4" novalidate>
+        <div><label for="nome">Nome completo</label><input id="nome" class="inp" required autocomplete="name"></div>
+        <div><label for="email">E-mail</label><input id="email" type="email" class="inp" required autocomplete="email"></div>
+        <div><label for="tel">Contato</label><input id="tel" class="inp" inputmode="tel" placeholder="(11) 00000-0000" maxlength="15" required></div>
+        <div><label for="curso">Selecione o curso</label><select id="curso" class="inp" required><option value="">Escolha um curso</option></select></div>
+        <button class="btn w-full" type="submit">Salvar inscrição</button>
+        <p id="msg" class="font-bold text-center" role="status"></p>
+      </form>
+      <aside class="card p-6 flex flex-col justify-center" style="background:linear-gradient(160deg,var(--card),var(--bg))">
+        <div class="text-5xl mb-3" aria-hidden="true">📬</div>
+        <h2 class="text-2xl font-bold mb-3">O que acontece depois?</h2>
+        <p class="mute">Você receberá um e-mail de confirmação e uma mensagem via WhatsApp com a data de início, o local e o que levar no primeiro dia.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- 4. SOBRE -->
+<section id="p-sobre" class="page">
+  <div class="max-w-5xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold mb-6">Quem somos</h1>
+    <div class="card p-6 md:p-8 grid md:grid-cols-3 gap-6">
+      <div><h3 class="font-bold text-lg mb-1">Quando surgiu</h3><p class="mute">Em 2012, numa sala emprestada, com doze crianças e dois voluntários.</p></div>
+      <div><h3 class="font-bold text-lg mb-1">Quem fundou</h3><p class="mute">Um grupo de moradores e professores do bairro (edite com o nome dos fundadores).</p></div>
+      <div><h3 class="font-bold text-lg mb-1">Objetivo principal</h3><p class="mute">Garantir acesso a educação, cultura e convivência para crianças carentes.</p></div>
+    </div>
+    <h2 class="text-2xl font-bold mt-10 mb-5">Feedback</h2><div class="grid md:grid-cols-3 gap-4 fb"></div>
+  </div>
+</section>
+
+<!-- 5. DOAÇÃO -->
+<section id="p-doacao" class="page">
+  <div class="max-w-5xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-bold text-center mb-8">Ajude a continuarmos o nosso projeto</h1>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="card p-6 text-center">
+        <svg viewBox="0 0 100 100" class="w-48 h-48 mx-auto mb-4" role="img" aria-label="Espaço para QR Code"><rect width="100" height="100" fill="#fff" stroke="#1d2b3a" stroke-width="2"/><g fill="#1d2b3a"><rect x="8" y="8" width="24" height="24"/><rect x="68" y="8" width="24" height="24"/><rect x="8" y="68" width="24" height="24"/><rect x="40" y="40" width="10" height="10"/><rect x="58" y="52" width="10" height="10"/><rect x="40" y="66" width="10" height="10"/><rect x="72" y="72" width="16" height="16"/></g><g fill="#fff"><rect x="13" y="13" width="14" height="14"/><rect x="73" y="13" width="14" height="14"/><rect x="13" y="73" width="14" height="14"/></g></svg>
+        <p class="mute text-sm mb-3">QR Code (substitua pela imagem real)</p>
+        <p class="font-bold">Chave PIX</p>
+        <div class="flex gap-2 mt-1"><input id="pix" class="inp text-center" readonly value="00.000.000/0001-00"><button id="copy" class="btn !px-4" type="button">Copiar</button></div>
+        <p class="mt-3"><span class="mute">Nome:</span> <b>Associação Semente do Amanhã</b></p>
+      </div>
+      <div class="card p-6 flex flex-col">
+        <h2 class="text-2xl font-bold mb-3">O que fazemos com o dinheiro</h2>
+        <ul class="mute space-y-2 mb-6"><li>🍎 Lanches e material escolar para as turmas</li><li>💻 Manutenção dos computadores e da internet</li><li>🏠 Aluguel e contas do espaço</li><li>🎓 Certificados e materiais dos cursos</li></ul>
+        <p class="mt-auto p-4 rounded-xl font-bold text-center" style="background:var(--bg);border:1px dashed var(--sun)">Agradecemos sua colaboração 💛</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. LOGIN ADMIN -->
+<section id="p-admin" class="page">
+  <div class="max-w-md mx-auto px-4 py-14">
+    <form id="fLogin" class="card p-8 space-y-4">
+      <h1 class="text-2xl font-bold text-center">Administrador</h1>
+      <div><label for="u">Usuário</label><input id="u" class="inp" autocomplete="username" required></div>
+      <div><label for="s">Senha</label><input id="s" type="password" class="inp" autocomplete="current-password" required></div>
+      <a href="#admin" id="forgot" class="text-sm underline block text-right" style="color:var(--brand)">Esqueceu a senha?</a>
+      <button class="btn w-full" type="submit">Entrar</button>
+      <p id="lmsg" class="text-center font-bold" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<!-- 7. PAINEL ADMIN -->
+<section id="p-painel" class="page">
+  <div class="max-w-5xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold mb-6">Cadastro de cursos</h1>
+    <form id="fCourse" class="grid md:grid-cols-2 gap-6">
+      <label for="foto" class="card p-6 flex flex-col items-center justify-center text-center cursor-pointer min-h-[280px] relative overflow-hidden" style="border:3px dashed var(--brand)">
+        <img id="prev" alt="" class="absolute inset-0 w-full h-full object-cover hidden">
+        <div id="upl"><div class="text-5xl" style="color:var(--brand)" aria-hidden="true">⬆</div><p class="font-bold mt-2">Upload de fotos</p><p class="mute text-sm">Clique para escolher uma imagem</p></div>
+        <input id="foto" type="file" accept="image/*" class="sr-only">
+      </label>
+      <div class="space-y-4">
+        <div><label for="cn">Nome do curso</label><input id="cn" class="inp" required></div>
+        <div><label for="ch">Carga horária</label><input id="ch" class="inp" placeholder="Ex.: 40 horas" required></div>
+        <div><label for="cd">Descrição / informações do curso</label><textarea id="cd" rows="5" class="inp"></textarea></div>
+        <div class="flex gap-3"><button class="btn flex-1" type="submit">Salvar</button><button class="btn btn-alt flex-1" type="reset" id="reset">Redefinir</button></div>
+        <p id="cmsg" class="font-bold" role="status"></p>
+      </div>
+    </form>
+    <h2 class="text-2xl font-bold mt-10 mb-4">Cursos cadastrados</h2>
+    <ul id="lista" class="space-y-3"></ul>
+  </div>
+</section>
+</main>
+
+<footer class="mt-8" style="background:var(--card);border-top:1px solid var(--line)">
+  <div class="max-w-6xl mx-auto px-4 py-8 grid sm:grid-cols-3 gap-6 text-sm">
+    <div><h3 class="font-bold mb-2">Contatos</h3><p class="mute">(11) 00000-0000<br>contato@sementedoamanha.org<br>Rua Exemplo, 123 – Guarulhos, SP</p></div>
+    <div><h3 class="font-bold mb-2">Redes sociais</h3><p class="mute">TikTok<br>Instagram<br>YouTube</p></div>
+    <div><h3 class="font-bold mb-2">Parceiros</h3><p class="mute">Parceiro 1<br>Parceiro 2<br><a href="#admin" class="underline">Área do administrador</a></p></div>
+  </div>
+</footer>
+
+<script>
+const courses=[["💻","Informática básica","40 horas","Windows, internet e pacote de escritório."],["🎨","Artes e desenho","30 horas","Desenho, pintura e criatividade."],["🎵","Música","36 horas","Violão, canto e ritmo em grupo."],["📚","Reforço escolar","60 horas","Português e matemática com apoio individual."],["⚽","Esportes","24 horas","Futsal, vôlei e atividades em equipe."],["🌱","Horta e meio ambiente","20 horas","Plantio, compostagem e cuidado com a natureza."]];
+const fbs=[["Mariana, mãe de aluno","Meu filho voltou a gostar de estudar. Obrigada por tudo!"],["Lucas, 15 anos","Aprendi informática e hoje ajudo em casa com o computador."],["Dona Rita, vizinha","Ver as crianças felizes aqui faz toda a diferença no bairro."]];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const star='<span class="stars" aria-label="5 estrelas">★★★★★</span>';
+$$('.fb').forEach(el=>el.innerHTML=fbs.map(f=>`<figure class="card p-5">${star}<blockquote class="my-2">${f[1]}</blockquote><figcaption class="mute text-sm font-bold">${f[0]}</figcaption></figure>`).join(''));
+function renderCourses(){
+  $('#grid').innerHTML=courses.map(c=>`<article class="card p-5"><div class="aspect-video rounded-lg mb-3 grid place-items-center text-5xl" style="background:var(--bg)">${c[0]}</div><h3 class="text-xl font-bold">${c[1]}</h3><p class="mute text-sm mb-1">${c[2]}</p><p class="mute">${c[3]}</p></article>`).join('');
+  $('#curso').innerHTML='<option value="">Escolha um curso</option>'+courses.map(c=>`<option>${c[1]}</option>`).join('');
+  $('#lista').innerHTML=courses.length?courses.map((c,n)=>`<li class="card p-4 flex items-center gap-3"><span class="text-3xl" aria-hidden="true">${c[0]}</span><div class="flex-1 min-w-0"><b>${c[1]}</b><p class="mute text-sm">${c[2]}</p></div><button type="button" data-del="${n}" class="btn btn-alt !py-2 !px-4" style="color:#c0392b" aria-label="Excluir ${c[1]}">Excluir</button></li>`).join(''):'<li class="mute">Nenhum curso cadastrado.</li>';
+}
+renderCourses();
+// Roteamento por hash
+const pages=['home','cursos','inscrever','sobre','doacao','admin','painel'];
+function route(){
+  let h=location.hash.slice(1);if(!pages.includes(h))h='home';
+  $$('.page').forEach(p=>p.classList.toggle('show',p.id==='p-'+h));
+  $$('#nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+h));
+  $('#nav').classList.add('hidden');window.scrollTo(0,0);
+}
+addEventListener('hashchange',route);route();
+$('#burger').onclick=()=>$('#nav').classList.toggle('hidden');
+// Carrossel
+const sl=$$('.slide'),dots=$('#dots');let i=0;
+sl.forEach((_,n)=>{const b=document.createElement('button');b.className='w-3 h-3 rounded-full bg-white/60';b.setAttribute('aria-label','Slide '+(n+1));b.onclick=()=>go(n);dots.appendChild(b)});
+function go(n){i=n;sl.forEach((s,k)=>s.classList.toggle('on',k===n));[...dots.children].forEach((d,k)=>d.style.background=k===n?'#fff':'rgba(255,255,255,.5)')}
+go(0);setInterval(()=>go((i+1)%sl.length),4500);
+// Máscara de telefone
+$('#tel').addEventListener('input',e=>{let v=e.target.value.replace(/\D/g,'').slice(0,11);
+  v=v.replace(/^(\d{0,2})/,'($1').replace(/^\((\d{2})(\d)/,'($1) $2').replace(/(\d{5})(\d{1,4})$/,'$1-$2');e.target.value=v.replace(/^\($/,'')});
+// Inscrição
+$('#fEnroll').onsubmit=e=>{e.preventDefault();const m=$('#msg');
+  const ok=$('#nome').value.trim()&&/\S+@\S+\.\S+/.test($('#email').value)&&$('#tel').value.length>=14&&$('#curso').value;
+  m.style.color=ok?'var(--leaf)':'#c0392b';
+  m.textContent=ok?'Inscrição salva! Você receberá um e-mail e uma mensagem no WhatsApp.':'Preencha todos os campos corretamente.';
+  if(ok)e.target.reset()};
+// Doação
+$('#copy').onclick=async()=>{try{await navigator.clipboard.writeText($('#pix').value);$('#copy').textContent='Copiado!'}catch(_){$('#pix').select()}setTimeout(()=>$('#copy').textContent='Copiar',2000)};
+// Login (demonstração: admin / 1234 — troque por autenticação real no back-end)
+$('#fLogin').onsubmit=e=>{e.preventDefault();
+  if($('#u').value==='admin'&&$('#s').value==='1234'){location.hash='#painel'}
+  else{$('#lmsg').style.color='#c0392b';$('#lmsg').textContent='Usuário ou senha incorretos.'}};
+$('#forgot').onclick=e=>{e.preventDefault();$('#lmsg').style.color='var(--brand)';$('#lmsg').textContent='Peça a redefinição de senha ao responsável pelo sistema.'};
+// Excluir curso
+$('#lista').addEventListener('click',e=>{const b=e.target.closest('[data-del]');if(!b)return;const n=+b.dataset.del;
+  if(confirm('Excluir o curso "'+courses[n][1]+'"? Essa ação não pode ser desfeita.')){courses.splice(n,1);renderCourses();$('#cmsg').style.color='var(--leaf)';$('#cmsg').textContent='Curso excluído.'}});
+// Painel
+$('#foto').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{$('#prev').src=r.result;$('#prev').classList.remove('hidden');$('#upl').classList.add('hidden')};r.readAsDataURL(f)};
+$('#reset').onclick=()=>{$('#prev').classList.add('hidden');$('#upl').classList.remove('hidden');$('#cmsg').textContent=''};
+$('#fCourse').onsubmit=e=>{e.preventDefault();courses.push(['🎓',$('#cn').value,$('#ch').value,$('#cd').value||'Novo curso.']);renderCourses();
+  $('#cmsg').style.color='var(--leaf)';$('#cmsg').textContent='Curso salvo e já aparece em Cursos.';e.target.reset();$('#prev').classList.add('hidden');$('#upl').classList.remove('hidden')};
+</script>
 </body>
 </html>
